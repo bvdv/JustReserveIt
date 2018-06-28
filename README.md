@@ -5,8 +5,9 @@ user:PovilasD
 
 admin:JozasP 
 
-controller:BroniusL 
+controller:BroniusL
+
 jun:Vitas
 
 
-pass: eX3lNLz%JcmwvXV4@c
+one pass for all: eX3lNLz%JcmwvXV4@c

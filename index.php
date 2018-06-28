@@ -1,4 +1,10 @@
-<?php require_once "config.php"; ?>
+<?php
+
+echo include;
+
+?>
+
+<!-- <?php require_once "config.php"; ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -35,3 +41,4 @@
     <?php require_once "footer.php"; ?>
   </body>
 </html>
+ -->

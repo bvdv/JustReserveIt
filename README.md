@@ -12,6 +12,7 @@ jun:Vitas
 
 one pass for all: eX3lNLz%JcmwvXV4@c
 
+
 Code refactoring tasks:
 
 1) Refactor by PSR

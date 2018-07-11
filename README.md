@@ -20,6 +20,6 @@ Code refactoring tasks:
 
 3) PDO
 
-4) __set(), __get(), __isset()...
+4) add __set(), __get(), __isset()...
 
 5) add exceptions

@@ -29,14 +29,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
             <img class="content-image img-fluid d-block mx-auto" src="assets/img/b2.jpg" alt="">
             <h2>2 bedroom</h2>
             <p>A very nicely presented two bedroom first floor flat.:) </p>
-            <p><a class="btn btn-secondary" href="http://shawk/src/rooms/show_room.php?id=8" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="/src/rooms/show_room.php?id=8" role="button">View details &raquo;</a></p>
           </div>
 
           <div class="col-md-4">
             <img class="content-image img-fluid d-block mx-auto" src="assets/img/b3.jpg" alt="">
             <h2>3 bedroom</h2>
             <p>A beautifully presented three double bedroom first floor new build apartment. :) </p>
-            <p><a class="btn btn-secondary" href="http://shawk/src/rooms/show_room.php?id=13" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="/src/rooms/show_room.php?id=13" role="button">View details &raquo;</a></p>
           </div>
         </div>
 

@@ -1,11 +1,11 @@
-<?php 
+<?php
 
-include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
  
 require_staff_login();
 
-if( ($_SESSION['role'] !== '2') && (isset($_SESSION['user_id'])) ) {
-  redirect_to("/public/index.php");
+if (($_SESSION['role'] !== '2') && (isset($_SESSION['user_id']))) {
+    redirect_to("/public/index.php");
 }
   
 
@@ -19,7 +19,7 @@ $staffs = Staff::find_all();
 
 
 <div class="container">
-  <?php echo display_session_message(); ?>
+    <?php echo display_session_message(); ?>
   <h3>Staff</h3>
 
     <div class="actions">
@@ -43,7 +43,7 @@ $staffs = Staff::find_all();
         <th>&nbsp;</th>
       </tr>
 
-      <?php foreach($staffs as $staff) { ?>
+        <?php foreach ($staffs as $staff) { ?>
         <tr>
           <td><?php echo h($staff->id); ?></td>
           <td><?php echo h($staff->username); ?></td>
@@ -59,7 +59,7 @@ $staffs = Staff::find_all();
           <td><a class="action" href="/src/staff/edit.php?id=<?php echo h(u($staff->id)); ?>">Edit</a></td>
           <td><a class="action" href="/src/staff/delete.php?id=<?php echo h(u($staff->id)); ?>">Delete</a></td>
         </tr>
-      <?php } ?>
+        <?php } ?>
     </table>
     <br>
     <p>Staff role</p>
@@ -68,7 +68,7 @@ $staffs = Staff::find_all();
     <p>2 - Admin</p>
 </div>
 
-<?php 
+<?php
 include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php');
 ?>
 

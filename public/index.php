@@ -1,5 +1,5 @@
 <?php 
-include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
 
 ?>
 
@@ -47,5 +47,5 @@ include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
     </main>
 
 <?php 
-include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php');
+include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php';
 ?>

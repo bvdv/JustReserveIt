@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . ('/src/header.php');
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
 
 // require_staff_login();
 // //only for admin
@@ -8,30 +8,28 @@ include $_SERVER['DOCUMENT_ROOT'] . ('/src/header.php');
 // }
 
 
-if(is_post_request()) {
-
+if (is_post_request()) {
   // Create record using post parameters
-  $args = $_POST['user'];
-  $user = new Users($args);
-  $result = $user->save();
+    $args = $_POST['user'];
+    $user = new Users($args);
+    $result = $user->save();
 
-  if($result === true) {
-    $new_id = $user->id;
-    $session->message('The user was created successfully.');
-    redirect_to("/src/users/show.php?id=" . $new_id);
-  } else {
-    // show errors
-  }
-
+    if ($result === true) {
+        $new_id = $user->id;
+        $session->message('The user was created successfully.');
+        redirect_to("/src/users/show.php?id=" . $new_id);
+    } else {
+      // show errors
+    }
 } else {
   // display the form
-  $user = new Users;
+    $user = new Users;
 }
 
 ?>
 
 <div class="container">
-  <?php echo display_session_message(); ?>
+    <?php echo display_session_message(); ?>
   <a class="back-link" href="/src/users/users.php">&laquo; Back</a>
   <h3>Create User</h3>
   <form action="/src/users/new_user.php" method="post" class="form-signin-reg">
@@ -59,11 +57,11 @@ if(is_post_request()) {
 
     <input type="password" class="form-control" name="user[confirm_password]" value="" placeholder="Confirm Password" >
     
-    <?php if ( ($_SESSION['role'] === '2') && isset($_SESSION['user_id']) ) : ?>
+    <?php if (($_SESSION['role'] === '2') && isset($_SESSION['user_id'])) : ?>
     <input type="number" name="user[user_status]" value="<?php echo h($user->user_status); ?>" class="form-control" placeholder="User status" min='0' max='1' >
-    <?php
+        <?php
     endif;
-    ?>
+?>
 
     <div id="operations">
       <input class="btn btn-lg btn-primary btn-block" type="submit" value="Create User" />
@@ -73,5 +71,5 @@ if(is_post_request()) {
   </form>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php'); ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php'; ?>
 

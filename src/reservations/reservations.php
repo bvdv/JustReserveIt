@@ -1,11 +1,11 @@
-<?php 
+<?php
 
-include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
 
-require_staff_login(); 
+require_staff_login();
 // only for staff
-if( !isset($_SESSION['role']) && !isset($_SESSION['user_id'])) {
-  redirect_to("/src/rooms/rooms.php");
+if (!isset($_SESSION['role']) && !isset($_SESSION['user_id'])) {
+    redirect_to("/src/rooms/rooms.php");
 }
 
 // Find all rooms;
@@ -29,14 +29,14 @@ $reservations = Reservation::find_all();
         <!-- for admin and controller -->
         <th>Acception status</th>
         <th>&nbsp;</th>
-        <?php if( (!($_SESSION['role'] !== '2') || !($_SESSION['role'] !== '1') )) : ?>
+        <?php if ((!($_SESSION['role'] !== '2') || !($_SESSION['role'] !== '1') )) : ?>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <?php endif;?>
         
       </tr>
 
-      <?php foreach($reservations as $reservation) : ?>
+        <?php foreach ($reservations as $reservation) : ?>
         <tr>
           <td><?php echo h($reservation->id); ?></td>
           <td><?php echo h($reservation->room_id);?></td>
@@ -44,31 +44,30 @@ $reservations = Reservation::find_all();
           <td><?php echo h($reservation->user_id); ?></td>
           <td><?php echo h($reservation->check_in); ?></td>
           <td><?php echo h($reservation->check_out); ?></td>
-          <?php if ($reservation->accepted === '0') : ?>
+            <?php if ($reservation->accepted === '0') : ?>
           <td>Waiting for acceptation</td>
-          <?php else : ?>
+            <?php else : ?>
           <td>Accepted</td>
-          <?php endif; ?>
+            <?php endif; ?>
           <td><a class="action" href="<?php echo url_for('../../src/reservations/show_reservation.php?id=' . h(u($reservation->id))); ?>">View</a></td>
           
-          <?php 
-          if( (!($_SESSION['role'] !== '2') || !($_SESSION['role'] !== '1') )) : ?>
-            
-              <?php if ($reservation->accepted === '1') : ?>
+            <?php
+            if ((!($_SESSION['role'] !== '2') || !($_SESSION['role'] !== '1') )) : ?>
+                <?php if ($reservation->accepted === '1') : ?>
                <td>Done</td><!-- do nothing -->
-              <?php else : ?>
+                <?php else : ?>
                 <td><a class="action" href="<?php echo url_for('../../src/reservations/edit_reservation.php?id=' . h(u($reservation->id))); ?>">Accept</a></td>
-              <?php endif; ?>
+                <?php endif; ?>
               </td>
               <td><a class="action" href="<?php echo url_for('../../src/reservations/delete_reservation.php?id=' . h(u($reservation->id))); ?>">Decline</a></td>
-          <?php endif; ?>
+            <?php endif; ?>
         </tr>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
     </table>   
   <hr>
 </div>
 
 
-<?php 
-include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php');
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php';
 ?>

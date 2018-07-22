@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
 
 require_staff_login(); 
 // only for admin or controller
@@ -72,5 +72,5 @@ if(is_post_request()) {
 </div>
 
 <?php 
-include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php'); 
+include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php';
 ?>

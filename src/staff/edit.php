@@ -1,39 +1,35 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
  
 require_staff_login();
 
-if( ($_SESSION['role'] !== '2') && (isset($_SESSION['user_id'])) ) {
-  redirect_to("/public/index.php");
+if (($_SESSION['role'] !== '2') && (isset($_SESSION['user_id']))) {
+    redirect_to("/public/index.php");
 }
 
-
-if(!isset($_GET['id'])) {
-  redirect_to(url_for('/src/staff/staff.php'));
+if (!isset($_GET['id'])) {
+    redirect_to(url_for('/src/staff/staff.php'));
 }
 $id = $_GET['id'];
 $staff = Staff::find_by_id($id);
-if($staff == false) {
-  redirect_to("/src/staff/staff.php");
+if ($staff == false) {
+    redirect_to("/src/staff/staff.php");
 }
 
-if(is_post_request()) {
-
+if (is_post_request()) {
   // Save record using post parameters
-  $args = $_POST['staff'];
-  $staff->merge_attributes($args);
-  $result = $staff->save();
+    $args = $_POST['staff'];
+    $staff->merge_attributes($args);
+    $result = $staff->save();
 
-  if($result === true) {
-    $session->message('The staff was updated successfully.');
-    redirect_to("/src/staff/show.php?id=" . $id);
-  } else {
-    // show errors
-  }
-   
+    if ($result === true) {
+        $session->message('The staff was updated successfully.');
+        redirect_to("/src/staff/show.php?id=" . $id);
+    } else {
+      // show errors
+    }
 } else {
-
   // display the form
 }
 
@@ -44,8 +40,8 @@ if(is_post_request()) {
     <a class="back-link" href="/src/staff/staff.php">&laquo; Back</a>
     <h3>Edit Staff</h3>
     
-    <?php 
-    echo display_errors($staff->errors) . "<br>"; 
+    <?php
+    echo display_errors($staff->errors) . "<br>";
      
     ?>
 
@@ -78,6 +74,6 @@ if(is_post_request()) {
 
   </div>
 
-<?php 
-include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php'); 
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php';
 ?>

@@ -1,38 +1,35 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
  
 require_staff_login();
 
-if( ($_SESSION['role'] !== '2') && (isset($_SESSION['user_id'])) ) {
-  redirect_to("/public/index.php");
+if (($_SESSION['role'] !== '2') && (isset($_SESSION['user_id']))) {
+    redirect_to("/public/index.php");
 }
 
-
-if(is_post_request()) {
-
+if (is_post_request()) {
   // Create record using post parameters
-  $args = $_POST['staff'];
-  $staff = new Staff($args);
-  $result = $staff->save();
+    $args = $_POST['staff'];
+    $staff = new Staff($args);
+    $result = $staff->save();
 
-  if($result === true) {
-    $new_id = $staff->id;
-    $session->message('The staff was created successfully.');
-    redirect_to("/src/staff/show.php?id=" . $new_id);
-  } else {
-    // show errors
-  }
-
+    if ($result === true) {
+        $new_id = $staff->id;
+        $session->message('The staff was created successfully.');
+        redirect_to("/src/staff/show.php?id=" . $new_id);
+    } else {
+      // show errors
+    }
 } else {
   // display the form
-  $staff = new Staff;
+    $staff = new Staff;
 }
 
 ?>
 
 <div class="container">
-  <?php echo display_session_message(); ?>
+    <?php echo display_session_message(); ?>
   <a class="back-link" href="/src/staff/staff.php">&laquo; Back</a>
   <h3>Create Staff</h3>
   <form action="/src/staff/new_staff.php" method="post" class="form-signin-reg">
@@ -65,5 +62,5 @@ if(is_post_request()) {
   </form>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php'); ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php'; ?>
 

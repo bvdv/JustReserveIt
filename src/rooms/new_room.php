@@ -1,31 +1,29 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
 
 require_staff_login();
 //only for admin
-if( ($_SESSION['role'] !== '2') && (isset($_SESSION['user_id'])) ) {
-  redirect_to("/src/rooms/rooms.php");
+if (($_SESSION['role'] !== '2') && (isset($_SESSION['user_id']))) {
+    redirect_to("/src/rooms/rooms.php");
 }
 
-if(is_post_request()) {
-
+if (is_post_request()) {
   // Create record using post parameters
-  $args = $_POST['room'];
-  $room = new Room($args);
-  $result = $room->save();
+    $args = $_POST['room'];
+    $room = new Room($args);
+    $result = $room->save();
 
-  if($result === true) {
-    $new_id = $room->id;
-    $session->message('The room was added successfully.');
-    redirect_to("/src/rooms/show_room.php?id=" . $new_id);
-  } else {
-    // show errors
-  }
-
+    if ($result === true) {
+        $new_id = $room->id;
+        $session->message('The room was added successfully.');
+        redirect_to("/src/rooms/show_room.php?id=" . $new_id);
+    } else {
+      // show errors
+    }
 } else {
   // display the form
-  $room = new Room;
+    $room = new Room;
 }
 
 ?>
@@ -36,7 +34,7 @@ if(is_post_request()) {
   <br><br>
   <h3>Add Room</h3>
 
-  <?php echo display_errors($room->errors); ?>
+    <?php echo display_errors($room->errors); ?>
 
   <form class="form-signin-reg" action="/src/rooms/new_room.php" method="post">
 
@@ -52,6 +50,6 @@ if(is_post_request()) {
   </form>
 </div>  
 
-<?php 
-include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php'); 
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php';
 ?>

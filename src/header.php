@@ -1,4 +1,4 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/config/initialize.php" ; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/config/initialize.php' ; ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,8 +30,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/src/rooms/rooms.php">Rooms</a>
             </li> 
-            <?php if( isset($_SESSION['user_id']) && isset($_SESSION['role']) ) : ?>
-
+            <?php if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) : ?>
             <li class="nav-item">
               <a class="nav-link" href="/src/reservations/reservations.php">Reservations</a>
             </li>
@@ -39,37 +38,36 @@
             <li class="nav-item">
               <a class="nav-link" href="/src/users/users.php">Users</a>
             </li>
-              <?php if ($_SESSION['role'] === '2') : ?>
+                <?php if ($_SESSION['role'] === '2') : ?>
                 <li class="nav-item">
                   <a class="nav-link" href="/src/staff/staff.php">Staff</a>
                 </li>
-              <?php
-              endif; 
-            endif; 
+                    <?php
+                endif;
+            endif;
 
-            if(isset($_SESSION['status'])) : ?>
-              
+if (isset($_SESSION['status'])) : ?>
             <li class="nav-item">
               <a class="nav-link" href="/src/users/show.php?id=<?php echo $_SESSION['user_id'] ?>">Your account</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/src/signout.php">Sign out</a>
             </li>                        
-            <?php elseif(isset($_SESSION['role'])) : ?>
+<?php elseif (isset($_SESSION['role'])) : ?>
             <li class="nav-item">
               <a class="nav-link" href="/src/staff/show.php?id=<?php echo $_SESSION['user_id'] ?>">Your account</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/src/signout.php">Sign out</a>
             </li>                       
-            <?php else : ?>
+<?php else : ?>
             <li class="nav-item">
               <a class="nav-link" href="/src/signin.php">Sign in</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/src/users/new_user.php">Register</a>
             </li>            
-            <?php endif;?>
+<?php endif;?>
           </ul>
         </div>
       </div>

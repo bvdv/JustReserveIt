@@ -1,6 +1,6 @@
 <?php 
 
-include $_SERVER['DOCUMENT_ROOT'] . ('/src/header.php');
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
 //for staff and users
 require_login();
 
@@ -42,5 +42,5 @@ $reserved_room = Reservation::find_by_id($id);
 </div>
 
 <?php 
-include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php'); 
+include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php';
 ?>

@@ -1,15 +1,14 @@
-<?php 
+<?php
 
-include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
  
 require_staff_login();
 
-if( isset($_SESSION['role']) && isset($_SESSION['user_id']) ) {
+if (isset($_SESSION['role']) && isset($_SESSION['user_id'])) {
   // Do nothing, let the rest of the page proceed
 } else {
-  redirect_to("/public/index.php");
+    redirect_to("/public/index.php");
 }
-
 
 $id = $_GET['id'] ?? '1'; // PHP > 7.0
 
@@ -20,7 +19,7 @@ $staff = Staff::find_by_id($id);
 
 
 <div class="container" id="show_data">
-  <?php echo display_session_message(); ?>
+    <?php echo display_session_message(); ?>
   <a class="back-link" href="/src/staff/staff.php">&laquo; Back</a>
   <h3>Staff <?php echo h($staff->full_name()); ?></h3>
     <div class="attributes">
@@ -67,6 +66,6 @@ $staff = Staff::find_by_id($id);
     </div>
 </div>
 
-<?php 
-include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php'); 
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php';
 ?>

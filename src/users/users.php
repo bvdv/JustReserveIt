@@ -1,12 +1,12 @@
-<?php 
-include $_SERVER['DOCUMENT_ROOT'] . "/src/header.php";
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/src/header.php';
 //only for staff
 require_staff_login();
 
-if( isset($_SESSION['role']) || isset($_SESSION['user_id']) ) {
+if (isset($_SESSION['role']) || isset($_SESSION['user_id'])) {
   // Do nothing, let the rest of the page proceed
 } else {
-  redirect_to("/public/index.php");
+    redirect_to("/public/index.php");
 }
 
 // Find all users
@@ -16,9 +16,9 @@ $users = Users::find_all();
 
 
 <div class="container">
-  <?php echo display_session_message(); ?>
+    <?php echo display_session_message(); ?>
   <h3>Users</h3>
-    <?php if ( $_SESSION['role'] === '2' ) : ?>
+    <?php if ($_SESSION['role'] === '2') : ?>
       <a class="action" href="/src/users/new_user.php">Add User</a>
         <table class="users" id="data_table">
           <tr>
@@ -35,7 +35,7 @@ $users = Users::find_all();
             <th>&nbsp;</th>
             <th>&nbsp;</th>
           </tr>
-          <?php foreach($users as $user) : ?>
+          <?php foreach ($users as $user) : ?>
             <tr>
               <td><?php echo h($user->id); ?></td>
               <td><?php echo h($user->username); ?></td>
@@ -50,12 +50,12 @@ $users = Users::find_all();
               <td><a class="action" href="/src/users/edit.php?id=<?php echo h(u($user->id)); ?>">Edit</a></td>
               <td><a class="action" href="/src/users/delete.php?id=<?php echo h(u($user->id)); ?>">Delete</a></td>
             </tr>
-          <?php 
-          endforeach; 
-          ?>
+                <?php
+          endforeach;
+?>
         </table>  
-      <?php
-      elseif ( $_SESSION['role'] === '1' ) : ?>
+        <?php
+    elseif ($_SESSION['role'] === '1') : ?>
         <table class="users" id="data_table">
           <tr>
             <th>Username</th>
@@ -66,7 +66,7 @@ $users = Users::find_all();
             <th>Document ID</th>
             <th>&nbsp;</th>
           </tr>
-          <?php foreach($users as $user) : ?>
+            <?php foreach ($users as $user) : ?>
             <tr>
               <td><?php echo h($user->username); ?></td>
               <td><?php echo h($user->name); ?></td>
@@ -76,12 +76,12 @@ $users = Users::find_all();
               <td><?php echo h($user->document_id); ?></td>
               <td><a class="action" href="/src/users/show.php?id=<?php echo h(u($user->id)); ?>">View</a></td>
             </tr>
-          <?php 
-          endforeach; 
-          ?>
+                <?php
+            endforeach;
+?>
         </table>
-        <?php
-        elseif ( $_SESSION['role'] === '0' ) : ?>
+            <?php
+    elseif ($_SESSION['role'] === '0') : ?>
         <table class="users" id="data_table">
           <tr>
             <th>Username</th>
@@ -91,7 +91,7 @@ $users = Users::find_all();
             <th>Contacts</th>
             <th>&nbsp;</th>
           </tr>
-          <?php foreach($users as $user) : ?>
+            <?php foreach ($users as $user) : ?>
             <tr>
               <td><?php echo h($user->username); ?></td>
               <td><?php echo h($user->name); ?></td>
@@ -100,12 +100,12 @@ $users = Users::find_all();
               <td><?php echo h($user->contacts); ?></td>
               <td><a class="action" href="/src/users/show.php?id=<?php echo h(u($user->id)); ?>">View</a></td>
             </tr>
-          <?php 
-          endforeach; 
-      endif;      
-      ?>      
+                <?php
+            endforeach;
+    endif;
+    ?>      
     </table>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . ('/src/footer.php'); ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/src/footer.php'; ?>
 
